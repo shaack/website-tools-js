@@ -1,8 +1,4 @@
 var wt = {
-
-    /**
-     * Really, you dont need more code for Cookies
-     */
     Cookie: {
         /**
          * Set a Cookie. If "days" is not set, a session cookie is written
@@ -36,7 +32,6 @@ var wt = {
             document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;'
         }
     },
-
     /**
      * Observe variables
      * `var observedVar = new Observed(function(newValue, oldValue) { runWhenValueChanged() })`
@@ -57,15 +52,23 @@ var wt = {
                 return this.value
             }
         }.bind(this)
-    },
-
-    openExternalLinksInNewTab: function() {
-        var links = document.links
-        for (var i = 0, linksLength = links.length; i < linksLength; i++) {
-            if (links[i].hostname !== window.location.hostname) {
-                links[i].target = '_blank'
-            }
+    }
+}
+/**
+ * Make Cookie and Observed global
+ */
+wt.setGlobals = function() {
+    window.Cookie = wt.Cookie
+    window.Observed = wt.Observed
+}
+/**
+ * Opens all external links in a new tab
+ */
+wt.openExternalLinksInNewTab = function() {
+    var links = document.links
+    for (var i = 0, linksLength = links.length; i < linksLength; i++) {
+        if (links[i].hostname !== window.location.hostname) {
+            links[i].target = '_blank'
         }
     }
-
 }

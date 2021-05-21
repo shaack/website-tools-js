@@ -16,9 +16,10 @@
 (more tests in console)
 <script src="../src/webtools.js"></script>
 <script>
-    wt.Cookie.set("testcookie", "123")
-    console.log("Cookie", wt.Cookie.get("testcookie"))
-    var observedVar = new wt.Observed(function (newValue, oldValue) {
+    wt.setGlobals()
+    Cookie.set("testcookie", "123")
+    console.log("Cookie", Cookie.get("testcookie"))
+    var observedVar = new Observed(function (newValue, oldValue) {
         console.log("newValue", newValue)
         console.log("oldValue", oldValue)
     })
