@@ -1,0 +1,28 @@
+{
+  "name": "webtools-js",
+  "version": "1.0.1",
+  "description": "Small vanilla webtools in small vanilla es5.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shaack/webtools-js.git"
+  },
+  "keywords": [
+    "es5",
+    "vanilla",
+    "tools",
+    "webtools",
+    "web",
+    "js",
+    "JavaScript"
+  ],
+  "author": "shaack.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shaack/webtools-js/issues"
+  },
+  "homepage": "https://github.com/shaack/webtools-js#readme"
+}
