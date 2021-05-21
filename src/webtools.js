@@ -1,9 +1,9 @@
-var wt = function () {
+var wt = {
 
     /**
      * Really, you dont need more code for Cookies
      */
-    this.Cookie = {
+    Cookie: {
         /**
          * Set a Cookie. If "days" is not set, a session cookie is written
          */
@@ -35,7 +35,7 @@ var wt = function () {
         remove: function (name) {
             document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;'
         }
-    }
+    },
 
     /**
      * Observe variables
@@ -45,7 +45,7 @@ var wt = function () {
      * Get values with
      * `var value = observedVar()`
      */
-    this.Observed = function (onChange) {
+    Observed: function (onChange) {
         return function (newValue) {
             if (arguments.length > 0) {
                 if (this.value !== newValue) {
@@ -57,9 +57,9 @@ var wt = function () {
                 return this.value
             }
         }.bind(this)
-    }
+    },
 
-    function openExternalLinksInNewTab() {
+    openExternalLinksInNewTab: function() {
         var links = document.links
         for (var i = 0, linksLength = links.length; i < linksLength; i++) {
             if (links[i].hostname !== window.location.hostname) {

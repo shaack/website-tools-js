@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>webtools-js tests</title>
+</head>
+<body>
+<h2>webtools-js test</h2>
+<ul>
+    <li>Open in new tab: <a href="https://www.chessmail.de">chessmail.de</a></li>
+    <li>Open in same tab: <a href="#">this page</a></li>
+</ul>
+(more tests in console)
+<script src="../src/webtools.js"></script>
+<script>
+    wt.Cookie.set("testcookie", "123")
+    console.log("Cookie", wt.Cookie.get("testcookie"))
+    var observedVar = new wt.Observed(function (newValue, oldValue) {
+        console.log("newValue", newValue)
+        console.log("oldValue", oldValue)
+    })
+    observedVar("New Value")
+    console.log("observedVar()", observedVar())
+    wt.openExternalLinksInNewTab()
+</script>
+</body>
+</html>
