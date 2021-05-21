@@ -1,10 +1,9 @@
 var wt = function () {
 
     /**
-     * Hey really, you dont need more code for Cookies
+     * Really, you dont need more code for Cookies
      */
     this.Cookie = {
-
         /**
          * Set a Cookie. If "days" is not set, a session cookie is written
          */
@@ -17,11 +16,8 @@ var wt = function () {
             }
             document.cookie = name + "=" + (value || "") + expires + "; path=/"
         },
-
         /**
-         * read a Cookie
-         * @param name
-         * @returns {string|undefined}
+         * Read a Cookie
          */
         get: function (name) {
             var nameEQ = name + "="
@@ -33,9 +29,42 @@ var wt = function () {
             }
             return undefined
         },
-
+        /**
+         * Remove a Cookie
+         */
         remove: function (name) {
             document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;'
+        }
+    }
+
+    /**
+     * Observe variables
+     * `var observedVar = new Observed(function(newValue, oldValue) { runWhenValueChanged() })`
+     * Set values with
+     * `observedVar(value)`
+     * Get values with
+     * `var value = observedVar()`
+     */
+    this.Observed = function (onChange) {
+        return function (newValue) {
+            if (arguments.length > 0) {
+                if (this.value !== newValue) {
+                    var oldValue = this.value
+                    this.value = newValue
+                    onChange(newValue, oldValue)
+                }
+            } else {
+                return this.value
+            }
+        }.bind(this)
+    }
+
+    function openExternalLinksInNewTab() {
+        var links = document.links
+        for (var i = 0, linksLength = links.length; i < linksLength; i++) {
+            if (links[i].hostname !== window.location.hostname) {
+                links[i].target = '_blank'
+            }
         }
     }
 
