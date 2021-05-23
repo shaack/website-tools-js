@@ -1,7 +1,18 @@
 # webtools-js
 
-Just some small tools to not bloat the code with
+Just some `JavaScript` tools for websites to not bloat the code with
 larger frameworks.
+
+### Functionality
+
+- Read and write Cookies
+- Observe Variables to callback on change
+- Automatically open external links in a new tab
+  
+### Benefits
+
+- Vanilla, uncompiled JavaScript in ES 5.1 Syntax
+- No dependencies
 
 ## Cookie
 
@@ -31,7 +42,7 @@ observedVar(value)
 ```
 
 Get values with
-```js 
+```js
 var value = observedVar()
 ```
 
