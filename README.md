@@ -8,8 +8,10 @@ larger frameworks.
 - Read and write Cookies
 - Observe variables to call a callback on change
 - Make http requests
+- Delegate events
+- Use a `documentReady` event handler
 - Automatically open external links in a new tab
-  
+
 ### Benefits
 
 - Vanilla, uncompiled JavaScript in ES 5.1 Syntax

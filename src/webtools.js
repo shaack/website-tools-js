@@ -1,3 +1,4 @@
+// noinspection JSUnusedGlobalSymbols
 var wt = {
     Cookie: {
         /**
@@ -68,23 +69,48 @@ var wt = {
             onError("Connection error")
         }
         request.send();
+    },
+    Events: {
+        delegate: function (eventName, elementSelector, handler) {
+            document.addEventListener(eventName, function (e) {
+                for (var target = e.target; target && target !== this; target = target.parentNode) {
+                    if (target.matches(elementSelector)) {
+                        handler.call(target, e);
+                        break;
+                    }
+                }
+            }, false);
+        },
+        documentReady: function (handler) {
+            if (document.readyState !== 'loading') {
+                handler();
+            } else {
+                document.addEventListener('DOMContentLoaded', handler);
+            }
+        }
+    },
+    Utils: {
+        /**
+         * Opens all external links in a new tab
+         */
+        openExternalLinksInNewTab: function () {
+            var links = document.links
+            for (var i = 0, linksLength = links.length; i < linksLength; i++) {
+                if (links[i].hostname !== window.location.hostname) {
+                    links[i].target = '_blank'
+                }
+            }
+        }
     }
 }
 /**
- * Make Cookie and Observed global
+ * Make the objects global
  */
 wt.setGlobals = function () {
     window.Cookie = wt.Cookie
     window.Observed = wt.Observed
+    window.HttpRequest = wt.HttpRequest
+    window.Events = wt.Events
+    window.Utils = wt.Utils
 }
-/**
- * Opens all external links in a new tab
- */
-wt.openExternalLinksInNewTab = function () {
-    var links = document.links
-    for (var i = 0, linksLength = links.length; i < linksLength; i++) {
-        if (links[i].hostname !== window.location.hostname) {
-            links[i].target = '_blank'
-        }
-    }
-}
+wt.setGlobals()
