@@ -49,11 +49,26 @@ Get values with
 var value = observedVar()
 ```
 
-## Further helpers
+## Utils
 
-### wt.openExternalLinksInNewTab()
+### Utils.openExternalLinksInNewTab()
 Opens all external links in a new tab
 
-### wt.setGlobals()
-Make `Cookie` and `Observed` global. Otherwise you have to use them with
-`wt.Cookie.set(name, value)` and `new wt.Observed(callback)`.
+## Examples
+```js
+// write a cookie
+Cookie.set("testcookie", "123")
+// read a cookie
+console.log("Cookie", Cookie.get("testcookie"))
+// observe the value of the variable `observedVar`
+var observedVar = new Observed(function (newValue, oldValue) {
+    console.log("newValue", newValue)
+    console.log("oldValue", oldValue)
+})
+// write the value of the variable `observedVar`
+observedVar("New Value")
+// read the value of the variable `observedVar`
+console.log("observedVar()", observedVar())
+// open all links in a new tab
+Utils.openExternalLinksInNewTab()
+```

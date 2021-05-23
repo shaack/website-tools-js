@@ -16,14 +16,18 @@
 (more tests in console)
 <script src="../src/webtools.js"></script>
 <script>
+    // write a cookie
     Cookie.set("testcookie", "123")
+    // read a cookie
     console.log("Cookie", Cookie.get("testcookie"))
+    // observe a variable value
     var observedVar = new Observed(function (newValue, oldValue) {
         console.log("newValue", newValue)
         console.log("oldValue", oldValue)
     })
     observedVar("New Value")
     console.log("observedVar()", observedVar())
+    // open all links in a new tab
     Utils.openExternalLinksInNewTab()
 </script>
 </body>
