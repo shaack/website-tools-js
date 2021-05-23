@@ -52,19 +52,35 @@ var wt = {
                 return this.value
             }
         }.bind(this)
+    },
+    HttpRequest: function (method, url, onSuccess, onError) {
+        var request = new XMLHttpRequest()
+        request.open(method || 'GET', url, true)
+
+        request.onload = function () {
+            if (this.status === 200) {
+                onSuccess(this.response)
+            } else {
+                onError("Error, server returned " + this.status)
+            }
+        }
+        request.onerror = function () {
+            onError("Connection error")
+        }
+        request.send();
     }
 }
 /**
  * Make Cookie and Observed global
  */
-wt.setGlobals = function() {
+wt.setGlobals = function () {
     window.Cookie = wt.Cookie
     window.Observed = wt.Observed
 }
 /**
  * Opens all external links in a new tab
  */
-wt.openExternalLinksInNewTab = function() {
+wt.openExternalLinksInNewTab = function () {
     var links = document.links
     for (var i = 0, linksLength = links.length; i < linksLength; i++) {
         if (links[i].hostname !== window.location.hostname) {

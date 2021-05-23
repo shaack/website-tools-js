@@ -6,7 +6,8 @@ larger frameworks.
 ### Functionality
 
 - Read and write Cookies
-- Observe Variables to callback on change
+- Observe variables to call a callback on change
+- Make http requests
 - Automatically open external links in a new tab
   
 ### Benefits
