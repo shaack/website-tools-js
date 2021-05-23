@@ -56,6 +56,10 @@ Opens all external links in a new tab
 
 ## Examples
 ```js
+// Call this first, to provide the webtools as global obejcts
+// if you don`t call this, you have to access the Object via 
+// the prefix `wt`. 
+wt.setGlobals()
 // write a cookie
 Cookie.set("testcookie", "123")
 // read a cookie

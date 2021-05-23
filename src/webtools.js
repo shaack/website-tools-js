@@ -107,10 +107,13 @@ var wt = {
  * Make the objects global
  */
 wt.setGlobals = function () {
-    window.Cookie = wt.Cookie
-    window.Observed = wt.Observed
-    window.HttpRequest = wt.HttpRequest
-    window.Events = wt.Events
-    window.Utils = wt.Utils
+    if (window.Cookie || window.Observed || window.HttpRequest || window.Events || window.Utils) {
+        console.error("webtools, existing global")
+    } else {
+        window.Cookie = wt.Cookie
+        window.Observed = wt.Observed
+        window.HttpRequest = wt.HttpRequest
+        window.Events = wt.Events
+        window.Utils = wt.Utils
+    }
 }
-wt.setGlobals()
