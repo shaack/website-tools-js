@@ -5,12 +5,12 @@ larger frameworks.
 
 ### Functionality
 
-- Read and write Cookies
-- Observe variables to call a callback on change
-- Make http requests
-- Delegate events
+- Read and write **Cookies**
+- **Observe** variables to call a callback on change
+- Make **http requests**
+- **Delegate** events
 - Use a `documentReady` event handler
-- Automatically open external links in a new tab
+- Automatically **open external links in a new tab**
 
 ### Benefits
 
