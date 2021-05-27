@@ -54,21 +54,23 @@ var wt = {
             }
         }.bind(this)
     },
-    HttpRequest: function (method, url, onSuccess, onError) {
-        var request = new XMLHttpRequest()
-        request.open(method || 'GET', url, true)
+    HttpRequest: {
+        get: function (url, onSuccess, onError) {
+            var request = new XMLHttpRequest()
+            request.open('GET', url, true)
 
-        request.onload = function () {
-            if (this.status === 200) {
-                onSuccess(this.response)
-            } else {
-                onError("Error, server returned " + this.status)
+            request.onload = function () {
+                if (this.status === 200) {
+                    onSuccess(this.response)
+                } else {
+                    onError("Error, server returned " + this.status)
+                }
             }
+            request.onerror = function () {
+                onError("Connection error")
+            }
+            request.send();
         }
-        request.onerror = function () {
-            onError("Connection error")
-        }
-        request.send();
     },
     Events: {
         delegate: function (eventName, elementSelector, handler) {
