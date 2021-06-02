@@ -1,6 +1,6 @@
 // noinspection JSUnusedGlobalSymbols
 var wt = {
-    Cookie: {
+    Cookies: {
         /**
          * Set a Cookie. If "days" is not set, a session cookie is written
          */
@@ -109,10 +109,10 @@ var wt = {
  * Make the objects global
  */
 wt.setGlobals = function () {
-    if (window.Cookie || window.Observed || window.HttpRequest || window.Events || window.Utils) {
-        console.error("webtools, existing global")
+    if (window.Cookies || window.Observed || window.HttpRequest || window.Events || window.Utils) {
+        console.error("webtools, existing global variable name")
     } else {
-        window.Cookie = wt.Cookie
+        window.Cookies = wt.Cookies
         window.Observed = wt.Observed
         window.HttpRequest = wt.HttpRequest
         window.Events = wt.Events
