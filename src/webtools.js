@@ -98,7 +98,8 @@ var wt = {
         openExternalLinksInNewTab: function () {
             var links = document.links
             for (var i = 0, linksLength = links.length; i < linksLength; i++) {
-                if (links[i].hostname !== window.location.hostname) {
+                var target = links[i].target
+                if (links[i].hostname !== window.location.hostname && target !== "_self") {
                     links[i].target = '_blank'
                 }
             }
@@ -109,6 +110,7 @@ var wt = {
  * Make the objects global
  */
 wt.setGlobals = function () {
+    console.warn("wt.setGlobals is deprecated, use the prefix `wt.`")
     if (window.Cookies || window.Observed || window.HttpRequest || window.Events || window.Utils) {
         console.error("webtools, existing global variable name")
     } else {

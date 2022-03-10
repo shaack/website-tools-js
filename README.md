@@ -17,20 +17,20 @@ larger frameworks.
 - Vanilla, uncompiled JavaScript in ES 5.1 Syntax
 - No dependencies
 
-## Cookie
+## Cookies
 
-### Cookie.set(name, value, days)
+### wt.Cookies.set(name, value, days)
 Set a Cookie. If "days" is not set, a session cookie is written
 
 ```js
 // write a session cookie
-Cookie.set("testcookie", "123")
+wt.Cookies.set("testcookie", "123")
 ```
 
-### Cookie.get(name)
+### wt.Cookies.get(name)
 Read a Cookie
 
-### Cookie.remove(name)
+### wt.Cookies.remove(name)
 Remove a Cookie
 
 ## Observed
@@ -38,7 +38,7 @@ Remove a Cookie
 Observe variables
 
 ```js
-var observedVar = new Observed(
+var observedVar = new wt.Observed(
     function(newValue, oldValue) { 
         // callback on change 
     })
@@ -56,10 +56,10 @@ var value = observedVar()
 
 ## HttpRequest
 
-### HttpRequest.get(url, onSuccess, onError) 
+### wt.HttpRequest.get(url, onSuccess, onError) 
 
 ```js
-HttpRequest.get("test-request.txt", function (response) {
+wt.HttpRequest.get("test-request.txt", function (response) {
     // success
     console.log(response)
 }, function (errorMessage) {
@@ -70,27 +70,23 @@ HttpRequest.get("test-request.txt", function (response) {
 
 ## Utils
 
-### Utils.openExternalLinksInNewTab()
+### wt.Utils.openExternalLinksInNewTab()
+
 Opens all external links in a new tab
 
 ## Examples
 ```js
 // Cookies
 
-// Call this first, to provide the webtools as global objects
-// if you don`t call this, you have to access the objects via 
-// the prefix `wt` (i.e. wt.Cookie.set(name,value)). 
-wt.setGlobals()
-
 // write a cookie
-Cookie.set("testcookie", "123")
+wt.Cookies.set("testcookie", "123")
 // read a cookie
-console.log("Cookie", Cookie.get("testcookie"))
+console.log("Cookie", wt.Cookies.get("testcookie"))
 
 // Observed variable
 
 // observe the value of the variable `observedVar`
-var observedVar = new Observed(function (newValue, oldValue) {
+var observedVar = new wt.Observed(function (newValue, oldValue) {
     console.log("newValue", newValue)
     console.log("oldValue", oldValue)
 })
@@ -101,7 +97,7 @@ console.log("observedVar()", observedVar())
 
 // HttpRequest
 
-HttpRequest.get("test-request.txt", function (response) {
+wt.HttpRequest.get("test-request.txt", function (response) {
     // success
     console.log(response)
 }, function (errorMessage) {
@@ -112,5 +108,5 @@ HttpRequest.get("test-request.txt", function (response) {
 // Utils
 
 // open all links in a new tab
-Utils.openExternalLinksInNewTab()
+wt.Utils.openExternalLinksInNewTab()
 ```

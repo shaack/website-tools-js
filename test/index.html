@@ -11,26 +11,26 @@
 <h2>webtools-js test</h2>
 <ul>
     <li>Open in new tab: <a href="https://www.chessmail.de">chessmail.de</a></li>
+    <li>Open in same tab: <a href="https://www.chessmail.de" target="_self">chessmail.de</a> (target="_self")</li>
     <li>Open in same tab: <a href="#">this page</a></li>
 </ul>
 (more tests in console)
 <script src="../src/webtools.js"></script>
 <script>
-    wt.setGlobals()
     // write a cookie
-    Cookie.set("testcookie", "123")
+    wt.Cookies.set("testcookie", "123")
     // read a cookie
-    console.log("Cookie", Cookie.get("testcookie"))
+    console.log("Cookie", wt.Cookies.get("testcookie"))
     // observe a variable value
-    var observedVar = new Observed(function (newValue, oldValue) {
+    var observedVar = new wt.Observed(function (newValue, oldValue) {
         console.log("newValue", newValue)
         console.log("oldValue", oldValue)
     })
     observedVar("New Value")
     console.log("observedVar()", observedVar())
     // open all links in a new tab
-    Utils.openExternalLinksInNewTab()
-    HttpRequest.get("test-request.txt", function (response) {
+    wt.Utils.openExternalLinksInNewTab()
+    wt.HttpRequest.get("test-request.txt", function (response) {
         // success
         console.log(response)
     }, function (errorMessage) {
