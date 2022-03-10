@@ -29,7 +29,7 @@
     observedVar("New Value")
     console.log("observedVar()", observedVar())
     // open all links in a new tab
-    wt.Utils.openExternalLinksInNewTab()
+    wt.Utils.openExternalLinksBlank()
     wt.HttpRequest.get("test-request.txt", function (response) {
         // success
         console.log(response)

@@ -95,7 +95,7 @@ var wt = {
         /**
          * Opens all external links in a new tab
          */
-        openExternalLinksInNewTab: function () {
+        openExternalLinksBlank: function () {
             var links = document.links
             for (var i = 0, linksLength = links.length; i < linksLength; i++) {
                 var target = links[i].target
@@ -103,6 +103,10 @@ var wt = {
                     links[i].target = '_blank'
                 }
             }
+        },
+        openExternalLinksInNewTab: function() {
+            console.warn("openExternalLinksInNewTab is deprecated, use openExternalLinksBlank")
+            wt.Utils.openExternalLinksBlank()
         }
     }
 }

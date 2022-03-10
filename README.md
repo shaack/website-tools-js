@@ -70,9 +70,9 @@ wt.HttpRequest.get("test-request.txt", function (response) {
 
 ## Utils
 
-### wt.Utils.openExternalLinksInNewTab()
+### wt.Utils.openExternalLinksBlank()
 
-Opens all external links in a new tab
+Opens all external links in a new tab, except when they have `target="_self"`. 
 
 ## Examples
 ```js
@@ -107,6 +107,6 @@ wt.HttpRequest.get("test-request.txt", function (response) {
 
 // Utils
 
-// open all links in a new tab
-wt.Utils.openExternalLinksInNewTab()
+// open all external links in a new tab, except when they have `target="_self"`
+wt.Utils.openExternalLinksBlank()
 ```
