@@ -107,6 +107,16 @@ var wt = {
         openExternalLinksInNewTab: function() {
             console.warn("openExternalLinksInNewTab is deprecated, use openExternalLinksBlank")
             wt.Utils.openExternalLinksBlank()
+        },
+        activateLinkables: function() {
+            var linkables = document.getElementsByClassName("linkable")
+            for (var i = 0; i < linkables.length; i++) {
+                var linkable = linkables[i]
+                linkable.style.cursor = "pointer"
+                linkable.addEventListener("click", function () {
+                    location.href = this.getAttribute("data-href")
+                })
+            }
         }
     }
 }

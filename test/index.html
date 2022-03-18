@@ -10,9 +10,10 @@
 <body>
 <h2>webtools-js test</h2>
 <ul>
-    <li>Open in new tab: <a href="https://www.chessmail.de">chessmail.de</a></li>
-    <li>Open in same tab: <a href="https://www.chessmail.de" target="_self">chessmail.de</a> (target="_self")</li>
-    <li>Open in same tab: <a href="#">this page</a></li>
+    <li>Open in new tab: <a href="https://shaack.com">chessmail.de</a></li>
+    <li>Open in same tab: <a href="https://shaack.com" target="_self">chessmail.de</a> (target="_self")</li>
+    <li>Open in same tab: <a href="/">this page</a></li>
+    <li><span class="linkable" data-href="https://shaack.com">Linkable</span></li>
 </ul>
 (more tests in console)
 <script src="../src/webtools.js"></script>
@@ -30,6 +31,7 @@
     console.log("observedVar()", observedVar())
     // open all links in a new tab
     wt.Utils.openExternalLinksBlank()
+    wt.Utils.activateLinkables()
     wt.HttpRequest.get("test-request.txt", function (response) {
         // success
         console.log(response)
