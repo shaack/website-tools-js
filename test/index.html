@@ -16,22 +16,19 @@
     <li><span class="linkable" data-href="https://shaack.com">Linkable</span></li>
 </ul>
 (more tests in console)
-<script src="../src/webtools.js"></script>
+<script src="../src/cookie.js"></script>
+<script src="../src/event.js"></script>
+<script src="../src/http-request.js"></script>
+<script src="../src/link.js"></script>
 <script>
+    console.log(wt)
     // write a cookie
-    wt.Cookies.set("testcookie", "123")
+    wt.Cookie.set("testcookie", "123")
     // read a cookie
-    console.log("Cookie", wt.Cookies.get("testcookie"))
-    // observe a variable value
-    var observedVar = new wt.Observed(function (newValue, oldValue) {
-        console.log("newValue", newValue)
-        console.log("oldValue", oldValue)
-    })
-    observedVar("New Value")
-    console.log("observedVar()", observedVar())
+    console.log("Cookie", wt.Cookie.get("testcookie"))
     // open all links in a new tab
-    wt.Utils.openExternalLinksBlank()
-    wt.Utils.activateLinkables()
+    wt.Link.openExternalLinksBlank()
+    wt.Link.activateLinkables()
     wt.HttpRequest.get("test-request.txt", function (response) {
         // success
         console.log(response)
